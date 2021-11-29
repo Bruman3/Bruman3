@@ -1,0 +1,112 @@
+import keyboard as kb
+import pyautogui
+import time
+import random
+import PIL
+import pynput
+from pynput import keyboard
+from pynput.keyboard import Controller as KeyboardController
+from pynput.keyboard import Key
+import win32api
+import win32con
+#made by Bruman3
+
+def findButton():
+    color = (88, 101, 242)
+    clicked = False
+    s = pyautogui.screenshot()#region=(7, 659, 962, 367)
+    for x in range(s.width):
+        for y in range(s.height):
+            if s.getpixel((x, y)) == color:
+                pyautogui.click(x, y)
+                clicked = True
+                break
+        if clicked == True:
+            break
+
+def beg_l():
+    pyautogui.typewrite('pls beg', interval=0.1)
+    time.sleep(0.2)
+    kb.press('enter')
+
+def dig_l():
+    pyautogui.typewrite('pls dig', interval=0.1)
+    time.sleep(0.2)
+    kb.press('enter')
+
+def search_l():
+    pyautogui.typewrite('pls scout', interval=0.1)
+    time.sleep(0.1)
+    kb.press('enter')
+    time.sleep(0.6)
+    findButton()
+    findButton()
+
+def crime_l():
+    pyautogui.typewrite('pls crime', interval=0.1)
+    time.sleep(0.1)
+    kb.press('enter')
+    time.sleep(0.6)
+    findButton()
+    findButton()
+
+def hl_l():
+    pyautogui.typewrite('pls hl', interval=0.1)
+    time.sleep(0.1)
+    kb.press('enter')
+    time.sleep(0.6)
+    findButton()
+    findButton()
+
+def pm_l():
+    pyautogui.typewrite('pls pm', interval=0.1)
+    time.sleep(0.1)
+    kb.press('enter')
+    time.sleep(0.6)
+    findButton()
+    findButton()
+
+def depall_l():
+    pyautogui.typewrite('pls dep all', interval=0.1)
+    time.sleep(0.1)
+    kb.press('enter')
+
+def break_l():
+    hiya=random.choice(range(1,3))
+    if hiya==1:
+        time.sleep(600)
+    if hiya==2:
+        time.sleep(1200)
+
+
+fag = 0
+print('starting in ')
+while fag < 6:
+    print(fag)
+    time.sleep(1)
+    fag = fag + 1
+
+run=1
+#edit this run to change how many times 
+while run>0:
+    run=run+1
+    number = random.choice(range(1, 9))
+    if number==1:
+        beg_l()
+    if number==2:
+        depall_l()
+    if number==3:
+        search_l()
+    if number==4:
+        crime_l()
+    if number==5:
+        dig_l()
+    if number==6:
+        hl_l()
+    if number==7:
+        pm_l()
+    if number==8:
+        break_l()
+
+pyautogui.typewrite('pls dep all')
+kb.press("enter")
