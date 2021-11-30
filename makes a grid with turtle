@@ -1,0 +1,81 @@
+#made by Bruman3
+import turtle
+
+turtle.tracer(0,0)
+screen = turtle.getscreen()
+p=turtle.Turtle()
+
+j=50
+def square():
+    p.forward(j)
+    p.left(90)
+    p.forward(j)
+    p.left(90)
+    p.forward(j)
+    p.left(90)
+    p.forward(j)
+    p.left(90)
+
+s=2.37
+def box(x, y):
+    box=turtle.Turtle()
+    box.down
+    box.speed(5000)
+    box.color("black")
+    box.shape("square")
+    box.shapesize(s,s)
+    box.setpos(x, y)
+
+
+def colour():
+    col='black'
+    p.fillcolor(col)
+    p.begin_fill()
+    square()
+    p.end_fill()
+
+def sides():
+    for msg in range(l+10):
+        for i in range(l):
+            p.up()
+            p.setpos(50*(msg+1), 50*i)
+            p.down()
+            square()
+    for msg in range(l+12):
+        for i in range(l):
+            p.up()
+            p.setpos(-50*(msg-1), 50*i)
+            p.down()
+            square()
+    for msg in range(l+10):
+        for i in range(l):
+            p.up()
+            p.setpos(50*(msg+1), -50*(i+1))
+            p.down()
+            square()
+    for msg in range(l+12):
+        for i in range(l):
+            p.up()
+            p.setpos(-50*(msg-1), -50*(i+1))
+            p.down()
+            square()
+
+l=10
+def grid():
+    for i in range(l):
+        p.up()
+        p.setpos(0, 50*i)
+        p.down()
+        square()
+    sides()
+    for f in range(l):
+        p.up()
+        p.setpos(0, -50*(f+1))
+        p.down()
+        square()
+
+
+grid()
+screen.onclick(box)
+screen.mainloop()
+turtle.update()
