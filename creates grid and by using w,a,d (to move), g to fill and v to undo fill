@@ -1,0 +1,114 @@
+#By Bruman3
+import turtle
+
+
+
+p=turtle.Turtle()
+p.speed('fastest')
+
+j=50
+def square():
+    p.forward(j)
+    p.left(90)
+    p.forward(j)
+    p.left(90)
+    p.forward(j)
+    p.left(90)
+    p.forward(j)
+    p.left(90)
+
+screen = turtle.getscreen()
+
+
+turtle.tracer(0,0,)
+s=2.37
+def box(x, y):
+    box=turtle.Turtle()
+    box.down
+    box.speed(5000)
+    box.color("black")
+    box.shape("square")
+    box.shapesize(s,s)
+    box.setpos(x, y)
+
+def sides():
+    for msg in range(l+10):
+        for i in range(l):
+            p.up()
+            p.setpos(50*(msg+1), 50*i)
+            p.down()
+            square()
+    for msg in range(l+12):
+        for i in range(l):
+            p.up()
+            p.setpos(-50*(msg-1), 50*i)
+            p.down()
+            square()
+    for msg in range(l+10):
+        for i in range(l):
+            p.up()
+            p.setpos(50*(msg+1), -50*(i+1))
+            p.down()
+            square()
+    for msg in range(l+12):
+        for i in range(l):
+            p.up()
+            p.setpos(-50*(msg-1), -50*(i+1))
+            p.down()
+            square()
+l=20
+def grid():
+    for i in range(l):
+        p.up()
+        p.setpos(0, 50*i)
+        p.down()
+        square()
+    sides()
+    for f in range(l):
+        p.up()
+        p.setpos(0, -50*(f+1))
+        p.down()
+        square()
+
+
+
+grid()
+p.setpos(0,0)
+turtle.tracer(1,1)
+
+def left():
+    p.left(90)
+    p.down()
+def right():
+    p.right(90)
+    p.down()
+def forward():
+    p.forward(j)
+    p.down()
+def fill():
+    col='black'
+    p.fillcolor(col)
+    p.begin_fill()
+    square()
+    p.end_fill()
+def undo_fill():
+    olo='white'
+    p.fillcolor(olo)
+    p.begin_fill()
+    square()
+    p.end_fill()
+
+
+screen.listen()
+screen.onkeypress(right, "d")
+screen.onkeypress(left, "a")
+screen.onkeypress(forward, "w")
+screen.onkeypress(fill, "g")
+screen.onkeypress(undo_fill, "v")
+
+
+turtle.update()
+screen.mainloop()
+
+#screen.onclick(box) 
+#box is for you to do a fill with mouse click but mouse click must be in the perfect centre of the square in the grid
