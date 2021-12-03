@@ -85,30 +85,39 @@ def right():
 def forward():
     p.forward(j)
     p.down()
+def back():
+    p.back(j)
+    p.down()
 def fill():
     col='black'
     p.fillcolor(col)
     p.begin_fill()
     square()
     p.end_fill()
+    p.color('green')
+
 def undo_fill():
     olo='white'
     p.fillcolor(olo)
     p.begin_fill()
     square()
     p.end_fill()
+    p.color('green')
 
 
 screen.listen()
 screen.onkeypress(right, "d")
 screen.onkeypress(left, "a")
 screen.onkeypress(forward, "w")
+screen.onkeypress(back, "d")
 screen.onkeypress(fill, "g")
 screen.onkeypress(undo_fill, "v")
 
 
 turtle.update()
 screen.mainloop()
+
+#screen.onclick(box)
 
 #screen.onclick(box) 
 #box is for you to do a fill with mouse click but mouse click must be in the perfect centre of the square in the grid
