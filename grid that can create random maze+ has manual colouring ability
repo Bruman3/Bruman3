@@ -35,7 +35,7 @@ turtle.tracer(0,0,)
 s=2.37
 def box(x, y):
     box=turtle.Turtle()
-    box.down
+    box.down()
     box.speed(5000)
     box.color("black")
     box.shape("square")
@@ -83,12 +83,12 @@ def grid():
 
 
 grid()
-p.setpos(0,0)
+p.setpos(1000,1000)
 turtle.tracer(1,1)
 
 ########################################################################################################################
 
-question=input('type 1 for manual or 2 for a generated maze:')
+qu=input('type 1 for manual or 2 for a generated maze:')
 
 def left():
     re.left(90)
@@ -113,13 +113,14 @@ def undo_fill():
     olo='white'
     re.fillcolor(olo)
     re.begin_fill()
-    msquare()
+    square()
     re.end_fill()
 
 dense=2
 
 
 def mazemaker():
+    turtle.tracer(0,0)
     #rnum=random.choice(range(1, l))
     #memeber to times rnum by 50
     for inbetween in range(5):
@@ -160,21 +161,21 @@ def mazemaker():
             re.setpos(1 * (rnum * -50), 1*msg*-50)
             re.down()
             fill()
+    turtle.tracer(1)
 
-
-screen.listen()
-
-if question==1:
+def movement():
+    screen.listen()
     screen.onkeypress(right, "d")
     screen.onkeypress(left, "a")
     screen.onkeypress(forward, "w")
     screen.onkeypress(back, "s")
     screen.onkeypress(fill, "g")
     screen.onkeypress(undo_fill, "v")
+
+if int(qu)==1:
+    movement()
 else:
-    turtle.tracer(0,0)
     mazemaker()
-    turtle.tracer(1)
 
 turtle.update()
 screen.mainloop()
