@@ -1,0 +1,182 @@
+import turtle
+import random
+#By Bruman3
+
+p=turtle.Turtle()
+p.speed('fastest')
+re=turtle.Turtle()
+re.speed('fastest')
+
+j=50
+def square():
+    p.forward(j)
+    p.left(90)
+    p.forward(j)
+    p.left(90)
+    p.forward(j)
+    p.left(90)
+    p.forward(j)
+    p.left(90)
+
+def msquare():
+    re.forward(j)
+    re.left(90)
+    re.forward(j)
+    re.left(90)
+    re.forward(j)
+    re.left(90)
+    re.forward(j)
+    re.left(90)
+
+screen = turtle.getscreen()
+
+
+turtle.tracer(0,0,)
+s=2.37
+def box(x, y):
+    box=turtle.Turtle()
+    box.down
+    box.speed(5000)
+    box.color("black")
+    box.shape("square")
+    box.shapesize(s,s)
+    box.setpos(x, y)
+
+def sides():
+    for msg in range(l+10):
+        for i in range(l):
+            p.up()
+            p.setpos(50*(msg+1), 50*i)
+            p.down()
+            square()
+    for msg in range(l+12):
+        for i in range(l):
+            p.up()
+            p.setpos(-50*(msg-1), 50*i)
+            p.down()
+            square()
+    for msg in range(l+10):
+        for i in range(l):
+            p.up()
+            p.setpos(50*(msg+1), -50*(i+1))
+            p.down()
+            square()
+    for msg in range(l+12):
+        for i in range(l):
+            p.up()
+            p.setpos(-50*(msg-1), -50*(i+1))
+            p.down()
+            square()
+l=20
+def grid():
+    for i in range(l):
+        p.up()
+        p.setpos(0, 50*i)
+        p.down()
+        square()
+    sides()
+    for f in range(l):
+        p.up()
+        p.setpos(0, -50*(f+1))
+        p.down()
+        square()
+
+
+grid()
+p.setpos(0,0)
+turtle.tracer(1,1)
+
+########################################################################################################################
+
+question=input('type 1 for manual or 2 for a generated maze:')
+
+def left():
+    re.left(90)
+    re.down()
+def right():
+    re.right(90)
+    re.down()
+def forward():
+    re.forward(j)
+    re.down()
+def back():
+    re.back(j)
+    re.down()
+def fill():
+    col='black'
+    re.fillcolor(col)
+    re.begin_fill()
+    msquare()
+    re.end_fill()
+
+def undo_fill():
+    olo='white'
+    re.fillcolor(olo)
+    re.begin_fill()
+    msquare()
+    re.end_fill()
+
+dense=2
+
+
+def mazemaker():
+    #rnum=random.choice(range(1, l))
+    #memeber to times rnum by 50
+    for inbetween in range(5):
+        for msg in range(dense):
+            #up y axis
+            rnum = random.choice(range(1, l-5))
+            re.up()
+            re.setpos(0, 1 * (rnum * 50))  # y axis
+            re.down()
+            fill()
+        for msg in range(dense):
+            rnum = random.choice(range(1, l))
+            re.up()
+            re.setpos(1*(rnum*50), 0) #x axis
+            re.down()
+            fill()
+        for msg in range(dense+l):
+            rnum = random.choice(range(1, l-2))
+            re.up()
+            re.setpos(1 * (rnum * 50), 1*msg*50)
+            re.down()
+            fill()
+        for msg in range(dense+l):
+            rnum = random.choice(range(1, l-2))
+            re.up()
+            re.setpos(1 * (rnum * -50), 1*msg*50)
+            re.down()
+            fill()
+        for msg in range(dense+l):
+            rnum = random.choice(range(1, l-2))
+            re.up()
+            re.setpos(1 * (rnum * 50), 1*msg*-50)
+            re.down()
+            fill()
+        for msg in range(dense+l):
+            rnum = random.choice(range(1, l-2))
+            re.up()
+            re.setpos(1 * (rnum * -50), 1*msg*-50)
+            re.down()
+            fill()
+
+
+screen.listen()
+
+if question==1:
+    screen.onkeypress(right, "d")
+    screen.onkeypress(left, "a")
+    screen.onkeypress(forward, "w")
+    screen.onkeypress(back, "s")
+    screen.onkeypress(fill, "g")
+    screen.onkeypress(undo_fill, "v")
+else:
+    turtle.tracer(0,0)
+    mazemaker()
+    turtle.tracer(1)
+
+turtle.update()
+screen.mainloop()
+
+#screen.onclick(box)
