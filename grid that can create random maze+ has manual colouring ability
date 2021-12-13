@@ -83,6 +83,7 @@ def grid():
 
 
 grid()
+p.up()
 p.setpos(1000,1000)
 turtle.tracer(1,1)
 
