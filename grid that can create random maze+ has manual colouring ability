@@ -172,11 +172,22 @@ def movement():
     screen.onkeypress(back, "s")
     screen.onkeypress(fill, "g")
     screen.onkeypress(undo_fill, "v")
+   
+def movementmouse(x, y):
+    re.up()
+    x=round(x/j)*j
+    y=round(y/j)*j
+    re.setpos(x, y)
+    re.down()
+    fill()
 
 if int(qu)==1:
+    screen.onclick(movementmouse)
+if int(qu)==2:
     movement()
-else:
+if int(qu)==3:
     mazemaker()
+    re.up()
 
 turtle.update()
 screen.mainloop()
