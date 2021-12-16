@@ -89,8 +89,7 @@ turtle.tracer(1,1)
 
 ########################################################################################################################
 
-qu=input('type 1 for manual or 2 for a generated maze:')
-
+qu=input('type 1 for manual(mouse) or 2 for manual(keyboard) or 3 for a random generated maze:')
 def left():
     re.left(90)
     re.down()
